@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+    <style>
+
+        body{
+            text-align: center;
+        }
+
+        table{
+            width: 600px;
+            height: 280px;
+            max-height:350px;
+            border: 1px solid black;
+            margin-left: 650px;
+        }
+
+        .headers{
+            font-weight: bold;
+            font-size: 20px;
+            text-align: left;
+        }
+
+        .data{
+            text-align: left;
+        }
+
+        table{
+            background-color: lightgray;
+        }
+
+        #new_users{
+            margin-left: -5px;
+            margin-top: 0px;
+            border: 1px solid black;
+            display: inline-block;
+            width: 600px;
+            padding: 40px 5px 5px 5px;
+        }
+
+        #first_name{
+            margin-bottom: 15px;
+            margin-right: 20px;
+        }
+
+        #email{
+            margin-bottom: 25px;
+            margin-right: 35px;
+        }
+
+
+        button{
+            width: 100px;
+            height: 30px;
+            font-weight: bold;
+            background-color: lightseagreen;
+            color: whitesmoke;
+            margin-bottom: 20px;
+            vertical-align: top;
+        }
+
+        #newuser{
+            margin-top: 25px;
+        }
+
+
+
+    </style>
+
+
+</head>
+
+<body>
+
+<div id='main'>
+    <h1>Created Users</h1>
+    
+    <table>
+        <tr class='headers'>
+            <th class='headers'>First Name</th>
+            <th class='headers'>Last Name</th>
+            <th class='headers'>Email Address</th>
+            <th class='headers'>Age</th>
+        </tr>
+        <tr>    {% for user in users %}
+            <td class="data">{{ user.first_name }}</td>
+            <td class="data">{{ user.last_name }}</td>
+            <td class="data">{{ user.email }}</td>
+            <td class="data">{{ user.age }}</td>
+        </tr>   {% endfor %}
+    </table>
+
+    <h1 id='newuser'>Add New User</h1>
+<div id= 'new_users'>
+    <form action="/submit" method='POST'>
+        {% csrf_token %}
+        <label for="first_name">First Name:</label>
+        <input type="text" name="first_name" id="first_name">
+        <label for="last_name">Last Name:</label>
+        <input type="text" name="last_name" id="last_name"> <br>
+
+        <label for="email">Email:</label>
+        <input type="text" name="email" id="email">
+        <label for="age">Age:</label>
+        <input type="text" name="age" id="age"> <br>
+        <button>Submit</button>
+        <button type="reset">Reset</button>
+    </form>
+</div>
+
+
+
+</div>
+
+
+
+
+
+</body>
+
+</html>
